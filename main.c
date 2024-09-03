@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <struct_defines.c>
+#include <function_define.c>
 
 int main(){
-    printf("hi hello");
+    fopen("..\\dados.bin", "w+");
     return 0;
 }
