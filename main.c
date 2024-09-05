@@ -5,5 +5,6 @@
 
 int main(){
     fopen("..\\dados.bin", "w+");
+    fclose("..\\dados.bin");
     return 0;
 }
