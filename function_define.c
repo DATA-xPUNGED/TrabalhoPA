@@ -1,3 +1,3 @@
-listar_pessoas(){
-    
-};
+void menu_principal(FILE* arquivo) {
+
+}
