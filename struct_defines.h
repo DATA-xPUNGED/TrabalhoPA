@@ -1,4 +1,9 @@
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#ifndef STRUCT_DEFINES_H
+#define STRUCT_DEFINES_H
 
 //instanciando as struct logo aqui pra eu não ter que mexer na ordem delas no código - Arthur
 struct estudante;
@@ -20,7 +25,7 @@ struct professor {
     int nasc_ano;
     int nasc_mes;
     int nasc_dia;
-    struct disciplina ;
+    disciplina disciplina;
 };
 
 struct disciplina {
@@ -40,3 +45,5 @@ typedef struct estudante estudante;
 typedef struct professor professor;
 typedef struct disciplina disciplina;
 typedef struct turma turma;
+
+#endif

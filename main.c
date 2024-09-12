@@ -1,46 +1,36 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <struct_defines.c>
-#include <function_define.c>
+#include "struct_defines.h"
+#include "function_defines.h"
 
 int main(){
-    int input;
-    FILE* arq;
-    arq = fopen("..\\dados.bin", "w+");
-    printf("-=Gerenciamento de Escola=-\n");
-    printf("Pressione o número correspondente a opção desejada.\n");
-    printf("[1] Gestão de Estudantes\n");
-    printf("[2] Gestão de Professores\n");
-    printf("[3] Gestão de Disciplinas\n");
-    printf("[4] Gestão de Turmas\n");
-    printf("[5] Sair do Sistema\n");
-    scanf("%d", &input);
-    switch (input)
-    {
-    case 1:
-        g_estudante();
-        break;
-    
-    case 2:
-        g_professore();
-        break;
-    
-    case 3:
-        g_disciplina();
-        break;
-    
-    case 4:
-        g_turma();
-        break;
-    
-    case 5:
-        exit(0);
-        break;
-    
-    default:
-        menu_principal(arq);
-        break;
+
+    FILE *arq;
+    arq = fopen("dados.bin", "rb");
+    if (arq == NULL) {
+        printf("Erro ao ler o arquivo.");
+        exit(1);
     }
-    fclose("..\\dados.bin");
+    estudante l_estudante[20];
+    professor l_professor[10];
+    disciplina l_disciplina[10];
+    turma l_turma[10];
+
+    fread(l_estudante, sizeof(l_estudante), 1, arq);
+    fread(l_professor, sizeof(l_professor), 1, arq);
+    fread(l_disciplina, sizeof(l_disciplina), 1, arq);
+    fread(l_turma, sizeof(l_turma), 1, arq);
+    fclose(arq);
+    
+    arq = fopen("dados.bin", "wb");
+    menu_principal(arq);
+
+
+    fwrite(l_estudante, sizeof(l_estudante), 1, arq);
+    fwrite(l_professor, sizeof(l_professor), 1, arq);
+    fwrite(l_disciplina, sizeof(l_disciplina), 1, arq);
+    fwrite(l_turma, sizeof(l_turma), 1, arq);
+
+    fclose(arq);
     return 0;
 }
