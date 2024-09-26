@@ -11,6 +11,11 @@ struct professor;
 struct disciplina;
 struct turma;
 
+struct disciplina {
+    int codigo;
+    char nome[64];
+    int id_professor;
+};
 struct estudante {
     int id;
     char nome[64];
@@ -25,13 +30,7 @@ struct professor {
     int nasc_ano;
     int nasc_mes;
     int nasc_dia;
-    disciplina disciplina;
-};
-
-struct disciplina {
-    int codigo;
-    char nome[64];
-    int id_professor;
+    struct disciplina disciplina;
 };
 
 struct turma {
