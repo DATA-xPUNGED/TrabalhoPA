@@ -889,9 +889,6 @@ void atualizar_turma() {
             scanf("%d", &turma.id_professor);
             int i;
             int total;
-            for(i=0;i<64;i++){
-                turma.id_alunos[i] = NULL;
-            }
             printf("Insira quantos alunos a turma vai ter");
             scanf("%d", &total);
             for(i=0;i<total;i++)
